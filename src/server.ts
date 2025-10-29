@@ -4,7 +4,7 @@ import { Server as SocketIOServer } from 'socket.io';
 import { initSocketHandlers } from './socket';
 import expressListEndpoints from 'express-list-endpoints';
 const PORT = process.env.PORT || 3000;
-const APP_URL = process.env.APP_URL || `http://localhost:${PORT}`;
+const APP_URL =  `http://localhost:${PORT}`;
 
 const httpServer = createServer(app);
 
@@ -17,7 +17,7 @@ const socketOrigins = [
 
 // Agregar orígenes de desarrollo si estamos en modo dev
 if (process.env.DEV_MODE === 'true' || process.env.NODE_ENV === 'development') {
-  socketOrigins.push('http://localhost:3001', 'http://localhost:3000');
+  socketOrigins.push('http://localhost:3001', APP_URL);
 }
 
 export const io = new SocketIOServer(httpServer, {
