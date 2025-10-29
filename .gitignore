@@ -1,0 +1,71 @@
+node_modules/
+dist/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Keep package-lock/yarn.lock committed for reproducible installs; do NOT ignore them here.
+
+# Local DB / build artifacts
+prisma/dev.db
+logs/
+*.log
+
+# VS Code
+.vscode/
+!.vscode/settings.json
+
+# Docker y configuración sensible
+docker-compose.yml
+docker-compose.*.yml
+docker-compose.override.yml
+.env.production
+.env.staging
+.env.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker volumes
+postgres_data/
+
+# TypeScript
+*.tsbuildinfo
+
+# Coverage
+coverage/
+.nyc_output/
+
+# Prisma
+.prisma/
+prisma/generated/
+
+# Caches
+.cache/
+.parcel-cache/
+.eslintcache
+
+# Puppeteer/Chromium
+.local-chromium/
+
+# Sharp cache
+.sharp-cache/
+
+# Temporary / runtime
+tmp/
+temp/
+pids/
+*.pid
+
+# Media artifacts (runtime-generated)
+media/qrs/
+uploads/
+
+# Secrets
+.secrets/
+
+# Local editor history
+.history/
