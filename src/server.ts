@@ -11,7 +11,8 @@ const httpServer = createServer(app);
 // Configuración de CORS para Socket.io según el ambiente
 const socketOrigins = [
   'https://nuevo.idsamed.com',
-  'https://192.168.1.148'
+  'https://192.168.1.148',
+  'https://isamed-web.onrender.com/'
 ];
 
 // Agregar orígenes de desarrollo si estamos en modo dev
