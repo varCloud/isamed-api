@@ -1,0 +1,297 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "linux-musl-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            Int            @id @default(autoincrement())
+  name          String?
+  email         String?
+  contact       String?
+  password      String?
+  status        String
+  role          String?
+  created_at    DateTime
+  updated_at    DateTime?
+  deleted_at    DateTime?
+  nss           String?
+  observations  String?
+  notes         Note[]
+  notifications Notification[]
+  orders        Order[]
+  per_diems     Per_diem[]
+  quotes        Quote[]
+}
+
+model Customer {
+  id               Int               @id @default(autoincrement())
+  name             String
+  email            String?
+  contact          String?
+  address          String?
+  map_url          String?
+  rfc              String?
+  postal_code      String?
+  status           String?
+  optional_contact String?
+  optional_email   String?
+  company_name     String?
+  created_at       DateTime
+  updated_at       DateTime?
+  deleted_at       DateTime?
+  orders           Order[]
+  per_diems        Per_diem[]
+  promissory_notes Promissory_note[]
+  quotes           Quote[]
+}
+
+model Notification {
+  id         Int      @id @default(autoincrement())
+  type       String
+  message    String
+  readed     Int
+  class      String
+  model_id   String
+  created_at DateTime
+  user_id    Int
+  user       User     @relation(fields: [user_id], references: [id], map: "Notification_user_fkey")
+
+  @@index([user_id], map: "Notification_user_id_fkey")
+}
+
+model Equipment_cat {
+  id         Int         @id @default(autoincrement())
+  name       String?
+  created_at DateTime
+  updated_at DateTime?
+  deleted_at DateTime?
+  equipments Equipment[]
+}
+
+model Brand_cat {
+  id         Int         @id @default(autoincrement())
+  name       String?
+  created_at DateTime
+  updated_at DateTime?
+  deleted_at DateTime?
+  equipments Equipment[]
+}
+
+model Equipment {
+  id               Int           @id @default(autoincrement())
+  equipment_cat_id Int
+  brand_cat_id     Int
+  order_id         Int
+  model            String
+  serial_number    String
+  failure          String
+  created_at       DateTime
+  brand            Brand_cat     @relation(fields: [brand_cat_id], references: [id], map: "Equipment_brand_fkey")
+  equipment_cat    Equipment_cat @relation(fields: [equipment_cat_id], references: [id], map: "Equipment_equipment_cat_fkey")
+  order            Order         @relation(fields: [order_id], references: [id], map: "Equipment_order_fkey")
+
+  @@index([brand_cat_id], map: "Equipment_brand_cat_id_fkey")
+  @@index([equipment_cat_id], map: "Equipment_equipment_cat_id_fkey")
+  @@index([order_id], map: "Equipment_order_id_fkey")
+}
+
+model Quote {
+  id                Int          @id @default(autoincrement())
+  user_id           Int?
+  customer_id       Int?
+  monthly_payment   String?
+  interest          String?
+  payment_advance   String?
+  discount          String?
+  flat_discount     Boolean      @default(false)
+  per_diem          String?
+  discount_per_diem String?
+  days_per_diem     Int?
+  fee               String?
+  iva               String?
+  comments          String?
+  created_at        DateTime
+  updated_at        DateTime?
+  deleted_at        DateTime?
+  order             Order[]
+  customer          Customer?    @relation(fields: [customer_id], references: [id], map: "Quote_customer_fkey")
+  user              User?        @relation(fields: [user_id], references: [id], map: "Quote_user_fkey")
+  quote_items       quote_item[]
+
+  @@index([customer_id], map: "Quote_customer_id_fkey")
+  @@index([user_id], map: "Quote_user_id_fkey")
+}
+
+model quote_item {
+  id          Int      @id @default(autoincrement())
+  quote_id    Int?
+  quantity    Int?
+  description String?
+  unit_price  String?
+  created_at  DateTime
+  quote       Quote?   @relation(fields: [quote_id], references: [id], map: "quote_item_quote_fkey")
+
+  @@index([quote_id], map: "quote_item_quote_id_fkey")
+}
+
+model Order {
+  id            Int             @id @default(autoincrement())
+  customer_id   Int?
+  user_id       Int?
+  comments      String?
+  status        String
+  quote_id      Int?
+  type_income   String?
+  created_at    DateTime
+  updated_at    DateTime?
+  deleted_at    DateTime?
+  equipments    Equipment[]
+  customer      Customer?       @relation(fields: [customer_id], references: [id], map: "Order_customer_fkey")
+  quote         Quote?          @relation(fields: [quote_id], references: [id], map: "Order_quote_fkey")
+  user          User?           @relation(fields: [user_id], references: [id], map: "Order_user_fkey")
+  repair_report Repair_report[]
+
+  @@index([customer_id], map: "Order_customer_id_fkey")
+  @@index([quote_id], map: "Order_quote_id_fkey")
+  @@index([user_id], map: "Order_user_id_fkey")
+}
+
+model Repair_report {
+  id           Int       @id @default(autoincrement())
+  order_id     Int?
+  comments     String?
+  diagnosis    String?
+  solution     String?
+  observations String?
+  updated_at   DateTime?
+  order        Order?    @relation(fields: [order_id], references: [id], map: "Repair_report_order_fkey")
+
+  @@index([order_id], map: "Repair_report_order_id_fkey")
+}
+
+model Per_diem {
+  id               Int               @id @default(autoincrement())
+  customer_id      Int?
+  user_id          Int?
+  vehicle          String
+  start_date       DateTime
+  end_date         DateTime?
+  start_km         Int
+  end_km           Int
+  total_km         Int
+  city             String
+  people           Int
+  hotel            Int
+  fee              Int
+  food             Int
+  vehicle_cost     Int
+  comments         String?
+  created_at       DateTime
+  updated_at       DateTime?
+  deleted_at       DateTime?
+  extra_expenses   Extra_expense[]
+  gasoline_charges Gasoline_charge[]
+  customer         Customer?         @relation(fields: [customer_id], references: [id], map: "Per_diem_customer_fkey")
+  user             User?             @relation(fields: [user_id], references: [id], map: "Per_diem_user_fkey")
+
+  @@index([customer_id], map: "Per_diem_customer_id_fkey")
+  @@index([user_id], map: "Per_diem_user_id_fkey")
+}
+
+model Gasoline_charge {
+  id          Int      @id @default(autoincrement())
+  per_diem_id Int
+  name        String
+  amount      Int
+  created_at  DateTime @default(now())
+  per_diem    Per_diem @relation(fields: [per_diem_id], references: [id], onDelete: Cascade, map: "Gasoline_charge_per_diem_fkey")
+
+  @@index([per_diem_id])
+}
+
+model Extra_expense {
+  id          Int      @id @default(autoincrement())
+  per_diem_id Int
+  name        String
+  amount      Int
+  created_at  DateTime @default(now())
+  per_diem    Per_diem @relation(fields: [per_diem_id], references: [id], onDelete: Cascade, map: "Extra_expense_per_diem_fkey")
+
+  @@index([per_diem_id])
+}
+
+model Promissory_note {
+  id             Int      @id @default(autoincrement())
+  customer_id    Int
+  quantity_text  String
+  quantity_digit Int
+  day_text       String
+  day_digit      Int
+  month_text     String
+  month_digit    Int
+  year_text      String
+  year_digit     Int
+  created_at     DateTime
+  customer       Customer @relation(fields: [customer_id], references: [id], map: "Promissory_note_customer_fkey")
+}
+
+model Photo {
+  id             Int      @id @default(autoincrement())
+  photeable_id   Int
+  photeable_type String
+  file_path      String
+  created_at     DateTime
+  file_name      String
+}
+
+model Template {
+  id         Int    @id @default(autoincrement())
+  model_type String
+  title      String
+  content    String
+}
+
+model Note {
+  id            Int      @id @default(autoincrement())
+  content       String
+  noteable_id   Int
+  noteable_type String
+  note_type     String
+  user_id       Int
+  created_at    DateTime
+  user          User     @relation(fields: [user_id], references: [id], map: "Note_user_fkey")
+}
+
+model Delivery {
+  id                Int      @id @default(autoincrement())
+  delivery_parcel   String
+  code              String
+  deliveriable_type String
+  deliveriable_id   Int
+  created_at        DateTime
+}
+
+model Reminder {
+  id              Int       @id @default(autoincrement())
+  remindable_type String
+  remindable_id   Int
+  content         String
+  remind_at       DateTime
+  reminded        Int
+  created_at      DateTime
+  updated_at      DateTime?
+}
+
+model Format {
+  id         Int      @id @default(autoincrement())
+  name       String
+  file_path  String
+  file_name  String
+  status     String
+  created_at DateTime
+}

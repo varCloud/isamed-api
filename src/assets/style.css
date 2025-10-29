@@ -1,0 +1,521 @@
+@page {
+  margin: 0cm 0cm;
+}
+
+body {
+  background: #fff;
+  margin-top:    4.7cm;
+  margin-bottom: 2cm;
+  margin-left:   1cm;
+  margin-right:  1cm;
+  color: #000;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 8pt;
+  line-height: 100%;
+}
+
+footer {
+  position: fixed; 
+  bottom: 200px; 
+  left: 1cm; 
+  right:1cm;
+  height: 50px; 
+  text-align: center;
+}
+
+h1, h2, h3, h4 {
+  font-weight: bold;
+  margin: 0;
+}
+h1 {
+  font-size: 16pt;
+  margin: 5mm 0;
+}
+h2 {
+  font-size: 14pt;
+}
+h3, h4 {
+  font-size: 9pt;
+}
+ol,
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+li,
+ul {
+  margin-bottom: 0.75em;
+}
+p {
+  margin: 0;
+  padding: 0;
+}
+p + p {
+  margin-top: 1.25em;
+}
+a {
+  border-bottom: 1px solid;
+  text-decoration: none;
+}
+hr {
+height: 8px;
+background-color: #afd038;
+border: none;
+}
+/* Basic Table Styling */
+
+.cuadro {
+  margin-top: 2px;
+  padding: 5px;
+  border: 2px solid;
+  border-color: #afd038;
+}
+
+.cuadro-observations {
+  margin-top: 2px;
+  padding: 5px;
+  border: 2px solid;
+  border-color: #afd038;
+  border-radius: 16px;
+}
+
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  page-break-inside: always;
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+th, td {
+  vertical-align: top;
+  text-align: left;
+  border: 0;
+}
+th.mayus , td.mayus, b.mayus {
+  vertical-align: top;
+  text-align: left;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  
+}
+tr.line, th.line , td.line {
+  border: 2px solid !important;
+  border-color: #afd038 !important;
+  background-color:  #afd038 !important;
+  padding: 5px !important;
+}
+
+th.line3 ,td.line3 {
+  border-right: 2px solid !important;
+  border-color: #afd038 !important;
+}
+tr.tr-foot{
+   position: fixed; 
+  bottom: 210px; 
+  border: 2px solid !important;
+  border-color: #afd038 !important;
+}
+table.container {
+  width:100%;
+  border: 0;
+}
+table.no-border{
+     border-collapse: collapse; 
+}
+td.no-border{
+  border: none !important;
+
+}
+
+tr.no-borders,
+td.no-borders,
+th.no-borders {
+  border: none !important;
+  border-top: 0 !important;
+  border-bottom: 0 !important;
+    border: none;
+  padding: 0 !important;
+  width: auto;
+}
+/* Header */
+table.head {
+  margin-bottom: 12mm;
+}
+td.header img {
+  max-height: 3cm;
+  width: auto;
+}
+td.header {
+  font-size: 16pt;
+  font-weight: 700;
+}
+td.shop-info {
+  width: 40%;
+}
+.document-type-label {
+  text-align: center !important;
+  text-transform: uppercase;
+}
+table.order-data-addresses {
+  width: 100%;
+  margin-bottom: 5mm;
+}
+td.order-data {
+  width: 30%;
+  font-size: 8.5pt !important;
+}
+td.order-data-2 {
+  /*width: 100%;*/
+  font-size: 7pt !important;
+}
+td.order-qr {
+  width: 40%;
+  vertical-align: top;
+  text-align: center;
+}
+td.datos {
+  width: 190px;
+ 
+}
+td.order-qr {
+  width: 20%;
+  vertical-align: top;
+  text-align: center;
+}
+.invoice .shipping-address {
+  width: 30%;
+}
+.packing-slip .billing-address {
+  width: 30%;
+}
+td.order-data table th {
+  font-weight: normal;
+  padding-right: 2mm;
+}
+
+table.completa {
+ height:  70%;  
+}
+
+table.order-details {
+  width:100%;
+  margin-bottom: 8mm;
+}
+.price {
+  width: 25%;
+}
+
+
+.valor {
+  width: 8%;}
+  
+ .quantity {
+  width: 9%;} 
+
+.order-details tr {
+  page-break-inside: always;
+  page-break-after: auto;
+}
+.order-details td,
+.order-details th {
+ /* border-bottom: 1px #ffffff solid;
+  border-top: 1px #ffffff solid;*/
+  padding: 0.375em;
+}
+.order-details th {
+  font-weight: bold;
+  text-align: left;
+}
+.order-details thead th {
+  color: black;
+  background-color: #ffffff;
+  border-color: #ffffff;
+}
+
+.order-details tr.bundled-item td.product {
+  padding-left: 5mm;
+}
+
+dl {
+  margin: 4px 0;
+}
+dt, dd, dd p {
+  display: inline;
+  font-size: 8pt;
+  line-height: 7pt;
+}
+dd {
+  margin-left: 5px;
+}
+dd:after {
+  content: "\A";
+  white-space: pre;
+}
+
+.customer-notes {
+   border: 2px solid #afd038;
+  padding: 5px;
+  font-size: 8pt;
+  min-height: 40px;
+}
+
+th.line2, td.line2 {
+  border: 2px solid #afd038 !important;
+  padding: 5px 4px !important;
+  font-size: 7.8pt;
+  text-align: left;
+}
+
+table.no-border-table td,
+table.no-border-table th {
+  border: none !important;
+  padding: 4px 6px;
+}
+
+/* Mantiene color de fondo en thead si usas una clase como lineD */
+table.no-border-table thead tr {
+  background-color: #afd038 !important;
+}
+
+table.totals {
+  width: 100%;
+  margin-top: 5mm;
+}
+table.totals th,
+table.totals td {
+  border: 0;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+table.totals th.description,
+table.totals td.price {
+  width: 50%;
+}
+table.totals tr:last-child td,
+table.totals tr:last-child th {
+  border-top: 2px solid #000;
+  border-bottom: 2px solid #000;
+  font-weight: bold;
+}
+table.totals tr.payment_method {
+  display: none;
+}
+
+#footer {
+  position: absolute;
+  bottom: -2cm;
+  left: 0;
+  right: 0;
+  height: 2cm;
+  text-align: center;
+  border-top: 0.1mm solid gray;
+  margin-bottom: 0;
+  padding-top: 2mm;
+}
+
+.pagenum:before { 
+  display: none !important; 
+}
+.pagenum,.pagecount {
+  font-family: sans-serif;
+}
+
+#watermark {
+  position: fixed;
+  bottom:   0px;
+  left:     0px;
+  /** The width and height may change 
+      according to the dimensions of your letterhead
+  **/
+  width:    21cm;
+  height:   29.7cm;
+
+  /** Your watermark should be behind every content**/
+  z-index:  -1000;
+}
+
+ .price1 {
+  width: 200px !important;
+}
+
+.valor1  {
+  width: 300px !important;
+
+}
+  
+ .quantity1 {
+  width: 8px !important;
+}
+
+  tr.lineD, th.lineD , td.lineD {
+  border: 2px solid !important;
+  border-color: #afd038 !important;
+  background-color:  #afd038 !important;
+  padding: 5px !important;
+  text-align: center !important;
+  
+}
+
+th.line2D ,td.line2D {
+  border-bottom : 2px solid !important;
+  border-color: #afd038 !important;
+  padding: 8px !important;
+  text-align: left !important;
+word-wrap: break-word;
+max-width: 0px;
+ 
+}
+
+th.mayus2 , td.mayus2, b.mayus2 {
+word-wrap: break-word;
+max-width: 0px;
+}
+table.equipment-details {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 2px solid #afd038; /* borde exterior */
+  margin-bottom: 8mm;
+  font-size: 8pt;
+}
+
+table.equipment-details thead th {
+  background-color: #afd038;
+  color: black;
+  padding: 6px;
+  text-align: left;
+  font-weight: bold;
+  border-bottom: 2px solid #afd038;
+}
+
+table.equipment-details tbody td {
+  padding: 6px;
+  border: none; /* Sin bordes internos */
+}
+
+/* Opcional: evita bordes heredados */
+table.equipment-details td,
+table.equipment-details th {
+  border: none !important;
+}
+.align-left {
+  text-align: left !important;
+}
+
+/* 1. Para las filas de productos (quote_items) */
+.quote-item-row td {
+  border-bottom: 2px solid #afd038 !important;
+  border-left: none !important;
+  border-right: none !important;
+  padding: 6px 4px;
+}
+
+/* 2. Para filas de desglose */
+.quotation-breakdown td {
+  border-left: 2px solid #afd038;
+  border-bottom: 2px solid #afd038;
+  padding: 6px 4px;
+  font-size: 8pt;
+}
+
+/* 3. Texto de la izquierda (etiqueta) */
+.quotation-breakdown td.label {
+  text-align: left;
+  font-weight: bold;
+}
+
+/* 4. Texto del valor numérico */
+.quotation-breakdown td.value {
+  text-align: left;
+  font-weight: bold;
+}
+
+/* 5. Total destacado */
+.quotation-total td {
+  background-color: #afd038;
+  border: 2px solid #afd038;
+  padding: 6px 4px;
+  font-weight: bold;
+  text-align: right;
+}
+
+.quotation-total td.label {
+  text-align: left;
+}
+
+ .tabla-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  .tabla-viaticos {
+    margin-left: auto;
+    margin-right: auto;
+    border-widht: 5px;
+    
+  }
+  
+  .tabla-viaticos th, .tabla-viaticos td {
+    padding: 5px;
+    text-align: left;
+    font-size: 20px;
+  }
+  
+  .tabla-viaticos th {
+    background-color: transparent !important;
+    color: black !important;
+        font-size: 14px;
+    border: 2px solid #afd038 !important;
+    white-space: nowrap; /* Evita el ajuste automático de texto */
+  }
+  
+  .tabla-viaticos td {
+    background-color: transparent !important;
+    color: black !important;
+
+    border: 5px solid #afd038 !important;
+  }
+  
+  .tabla-viaticos tr:nth-child(even) {
+    background-color: transparent;
+  }
+  
+   .tabla-viaticos th.transparente {
+    background-color: transparent !important;
+    color: black !important;
+    border-color: transparent !important;
+  }
+  .tabla-viaticos th.gastos {
+    background-color: #afd038 !important;
+    color: black !important;
+    border-color: #afd038 !important;
+  }
+  .tabla-viaticos th.datos {
+    background-color: #afd038 !important;
+    color: black !important;
+    border-color: #afd038 !important;
+    border-width: 2;
+  }
+  .tabla-viaticos caption {
+    font-weight: bold;
+    font-size: 14px;
+    padding: 10px;
+    color: #afd038;
+    background-color: transparent;
+  }
+   .tabla-viaticos th.borde-inferior {
+     border-top: none !important;
+    border-right: none !important;
+    border-left: none !important;
+    border-bottom: 2px solid #afd038 !important;
+  }
+   .tabla-viaticos th.borde-izquierdo {
+     border-top: none !important;
+    border-right: none !important;
+    border-left: 2px solid #afd038 !important;
+    border-bottom: none !important;
+  
+  }

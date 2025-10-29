@@ -1,0 +1,10 @@
+import { Router } from "express";
+import { ReminderController } from "../controllers/reminder.controller";
+import { requireAuth } from "../middleware/auth.middleware";
+import { reminderSchmema } from "../validators/reminder.validator";
+import { validateWithZod } from "../middleware/validate.middleware";
+const reminderRouter = Router();
+reminderRouter.post('/', requireAuth, validateWithZod(reminderSchmema), ReminderController.createReminder);
+reminderRouter.get('/:entityType/:entityId', requireAuth, ReminderController.getRemindersByEntity);
+reminderRouter.delete('/:id', requireAuth, ReminderController.deleteReminder);
+export default reminderRouter;
