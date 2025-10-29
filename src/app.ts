@@ -19,11 +19,14 @@ if (process.env.DEV_MODE === 'true' || process.env.NODE_ENV === 'development') {
   allowedOrigins.push('http://localhost:3001', 'http://localhost:3000', APP_URL);
 }
 
+// Habilita CORS para todas las rutas y maneja preflight correctamente en Express 5
+// Nota: En Express 5 no se admite el comodín '*' como ruta; usa '/*' o una expresión equivalente
+// Si necesitas restringir orígenes, descomenta el bloque siguiente y ajusta allowedOrigins
 // app.use(cors({
 //   origin: allowedOrigins,
 //   credentials: true,
 // }));
-app.options('*', cors());
+app.options('/*', cors());
 app.use(express.json());
 app.set('trust proxy', true);
 app.use(cookieParser());
