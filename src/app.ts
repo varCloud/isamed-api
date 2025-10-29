@@ -26,7 +26,7 @@ if (process.env.DEV_MODE === 'true' || process.env.NODE_ENV === 'development') {
 //   origin: allowedOrigins,
 //   credentials: true,
 // }));
-app.options('/*', cors());
+app.use(cors());
 app.use(express.json());
 app.set('trust proxy', true);
 app.use(cookieParser());
