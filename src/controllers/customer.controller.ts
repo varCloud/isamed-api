@@ -17,9 +17,14 @@ export const CustomerController = {
   },
 
   async select(req: AuthenticatedRequest, res: Response) {
-    const customers = await getCostumerToSelect();
+    try {
+      const customers = await getCostumerToSelect();
+    
     res.json(customers);
-  },
+  } catch (error) {
+    res.status(500).json({ error: 'Error al obtener los clientes para selección' });
+  }
+},
 
   async show(req: AuthenticatedRequest, res: Response) {
     const customer = await getCustomerById(+req.params.id);

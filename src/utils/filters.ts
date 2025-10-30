@@ -27,7 +27,6 @@ export function buildPrismaWhere(
         } else {
           current[key] = {
             contains: value,
-            mode: 'insensitive',
           };
         }
       } else {
