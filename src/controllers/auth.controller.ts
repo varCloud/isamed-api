@@ -145,8 +145,20 @@ export const AuthController = {
   },
 
   logout(req: Request, res: Response) {
-    res.clearCookie('refreshToken');
-    res.clearCookie('accessToken');
+    // Limpiar cookies con las mismas opciones que se usaron al crearlas
+    res.clearCookie('refreshToken', {
+      httpOnly: true,
+      secure: true,
+      sameSite: 'none',
+      path: '/' // Importante especificar el path
+    });
+    
+    res.clearCookie('accessToken', {
+      httpOnly: true,
+      secure: true,
+      sameSite: 'none',
+      path: '/' // Importante especificar el path
+    });
 
     res.json({ message: 'Logout exitoso' });
   },
