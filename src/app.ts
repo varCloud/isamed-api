@@ -11,7 +11,7 @@ const APP_URL = `http://localhost:${PORT}`;
 const allowedOrigins = [
   'https://nuevo.idsamed.com',
   'https://192.168.1.148',
-  'https://isamed-web.onrender.com/',
+  'https://isamed-web.onrender.com',
 ];
 
 // Agregar orígenes de desarrollo si estamos en modo dev
@@ -28,9 +28,7 @@ if (process.env.DEV_MODE === 'true' || process.env.NODE_ENV === 'development') {
 // Si necesitas restringir orígenes, descomenta el bloque siguiente y ajusta allowedOrigins
 app.use(
   cors({
-    origin: function (origin, callback) {
-      callback(null, true);
-    },
+    origin: allowedOrigins,
     credentials: true,
   })
 );
